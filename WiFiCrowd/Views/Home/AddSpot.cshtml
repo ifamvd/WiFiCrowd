@@ -1,0 +1,73 @@
+﻿@{
+    ViewData["Title"] = ViewBag.Title;
+}
+@model WiFiCrowd.ViewModels.AddSpotViewModel
+
+<div class="text-center">
+    <h1 class="display-4">@ViewBag.Title</h1>
+
+    <p>
+        Use the search box above to fill out the fields below. Then, type in the WiFi password for the establishment.
+    </p>
+
+    <div style="height: 400px; width: 100%;">
+        <div id="map"></div>
+    </div>
+
+    <form asp-controller="Home" asp-action="AddSpot" method="post">
+
+        <div asp-validation-summary="All"></div>
+
+        <div class="form-group">
+            <label asp-for="Name"></label>
+            <input id="name" class="form-control" asp-for="Name" disabled="true" />
+            <span asp-validation-for="Name"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Address"></label>
+            <input id="address" class="form-control" asp-for="Address" disabled="true" />
+            <span asp-validation-for="Address"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Lat"></label>
+            <input id="lat" class="form-control" asp-for="Lat" disabled="true" />
+            <span asp-validation-for="Lat"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Lng"></label>
+            <input id="lng" class="form-control" asp-for="Lng" disabled="true" />
+            <span asp-validation-for="Lng"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Url"></label>
+            <input id="url" class="form-control" asp-for="Url" disabled="true" />
+            <span asp-validation-for="Url"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Password"></label>
+            <input id="password" class="form-control" asp-for="Password" />
+            <span asp-validation-for="Password"></span>
+        </div>
+
+        <input type="submit" class="btn btn-info" value="Add New Location" />
+
+    </form>
+</div>
+
+<div style="height:300px;"></div>
+
+<script>
+    function initGmaps() {
+        initMap();
+        initSearch();
+    }
+
+    function populate() {
+
+    }
+</script>

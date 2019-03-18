@@ -1,0 +1,39 @@
+﻿@{
+    ViewData["Title"] = ViewBag.Title;
+}
+
+<div class="text-center">
+    <h1 class="display-4">@ViewBag.Title</h1>
+
+    <p>
+        Let's remove some of these WiFi spots. It is possible that some of these establishments don't offer these access anymore.
+    </p>
+
+    <form asp-controller="Home" asp-action="RemoveSpot" method="post">
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Name</th>
+                    <th>Address</th>
+                    <th>Remove</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var marker in ViewBag.markers)
+                {
+                    <tr>
+                        <td>@marker.Name</td>
+                        <td>@marker.Address</td>
+                        <td>
+                            <input type="checkbox" name="markerIds" id="@marker.ID" value="@marker.ID" />
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <input type="submit" class="btn btn-info" value="Remove Selected Marker(s)" />
+    </form>
+
+</div>
+
+<div style="height:300px;"></div>

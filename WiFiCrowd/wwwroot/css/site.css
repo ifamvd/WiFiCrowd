@@ -1,10 +1,48 @@
 ﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 for details on configuring this project to bundle and minify static web assets. */
 
+.display-4 {
+    margin: 40px auto;
+}
+
+.text-center p {
+    margin: 25px auto;
+}
+
+.text-center table {
+    margin: 25px auto;
+}
+
+.text-center form {
+    margin: 25px auto;
+}
+
+.text-center .btn-info {
+    margin:25px auto;
+}
+
+#map {
+    height: 100%;
+    width: 100%;
+}
+
 a.navbar-brand {
   white-space: normal;
   text-align: center;
   word-break: break-all;
+}
+
+div.map-info-content {
+    margin: 15px 10px;
+}
+
+div.map-info-content h4 {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+div.map-info-content p {
+    margin: 10px;
 }
 
 /* Sticky footer styles

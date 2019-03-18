@@ -1,8 +1,61 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = ViewBag.Title;
 }
+@model List<WiFiCrowd.Models.Marker>
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-4">@ViewBag.Title</h1>
+    <p>
+        Do not waste your precious data connection on your phone. Use it too much and it may get throttled.
+        Now you can easily find places with accessible WiFi connection with this free service. Go ahead and
+        give it a spin!
+    </p>
+    <p>
+        Stuff in the database:
+    </p>
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th>Name</th>
+                <th>Address</th>
+                <th>WiFi Password</th>
+                <th>Link</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var spot in Model)
+            {
+                <tr>
+                    <td>@spot.Name</td>
+                    <td>@spot.Address</td>
+                    <td>@spot.Password</td>
+                    <td><a href="@spot.Url">Open in Google Maps</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <div style="height: 700px; width: 100%;">
+        <div id="map"></div>
+    </div>
+    <p>
+        Click on WiFi icon to see WiFi password. Double click on  WiFi icon to zoom into the area.
+    </p>
 </div>
+
+<script>
+    function initGmaps() {
+        initMap();
+        initSearch();
+        @foreach (var spot in Model)
+        {
+            <text>addMarker("@spot.Name", "@spot.Address", @spot.Lat, @spot.Lng, "@spot.Url", "@spot.Password");</text>
+        }
+    }
+
+    function populate() {
+        @foreach (var spot in Model)
+        {
+            <text>addMarker("@spot.Name", "@spot.Address", @spot.Lat, @spot.Lng, "@spot.Url", "@spot.Password");</text>
+        }
+    }
+</script>
